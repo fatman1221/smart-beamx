@@ -14,7 +14,7 @@
 			<view class="checkin">
 				<view class="days">
 					<view class="day" v-for="d in 7" :class="{done: d<=checkedDays}">
-						<text>{{d}}天</text>
+						<text style="font-size: 24rpx;">{{d}}天</text>
 						<image src="@/static/icons/my/points-icon.png" class="point-icon" alt="" srcset="" mode="aspectFill" :key="d" />
 					</view>
 				</view>

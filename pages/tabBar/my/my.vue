@@ -89,15 +89,15 @@
 			</view>
 
 			<!-- 临时测试登录按钮 -->
-			<view class="menu-item" @click="testLogin">
-				<view class="menu-icon-container test">
-					<view class="menu-icon-slot">
-						<image class="menu-icon-svg" src="/static/icons/settings.svg" mode="widthFix"></image>
-					</view>
-				</view>
-				<text class="menu-title">{{ isLoggedIn ? '退出登录' : '测试登录' }}</text>
-				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
-			</view>
+<!--			<view class="menu-item" @click="testLogin">-->
+<!--				<view class="menu-icon-container test">-->
+<!--					<view class="menu-icon-slot">-->
+<!--						<image class="menu-icon-svg" src="/static/icons/settings.svg" mode="widthFix"></image>-->
+<!--					</view>-->
+<!--				</view>-->
+<!--				<text class="menu-title">{{ isLoggedIn ? '退出登录' : '测试登录' }}</text>-->
+<!--				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />-->
+<!--			</view>-->
 		</view>
 	</view>
 </template>

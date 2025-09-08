@@ -11,14 +11,17 @@
 			</view>
 			<view class="row">
 				<view class="info">
-					<view class="ver">V{{ version }}</view>
-					<view class="size">{{ sizeMB }}MB</view>
+					<view class="version-header">
+						<text class="ver">新版本</text>
+						<view class="update-dot"></view>
+					</view>
+					<view class="size">1.0.123</view>
 				</view>
 				<image class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset=""  mode="aspectFill"/>
 			</view>
 		</view>
 		<view class="btn-wrap">
-			<button class="btn" @click="install">安装更新</button>
+			<button class="btn" @click="install">检查更新</button>
 		</view>
 	</view>
 </template>
@@ -97,6 +100,7 @@
 		transform: rotateY(180deg);
 		opacity: 0.5;
 		margin-top: 20rpx;
+		margin-right: 34rpx;
 	}
 
 	.back-icon {
@@ -105,11 +109,12 @@
 	}
 
 	.update-card {
-		margin: 20px;
-		padding: 20px;
+    margin-left: 12rpx;
+    margin-right: 12rpx;
+
 		background: rgba(255, 255, 255, .06);
 		border: 1px solid rgba(255, 255, 255, .12);
-		border-radius: 16px;
+		border-radius: 24rpx;
 		backdrop-filter: blur(18px);
 		position: relative;
 		z-index: 1;
@@ -117,7 +122,9 @@
 
 	.row {
 		display: flex;
-
+		margin-top: 20rpx;
+		margin-bottom: 32rpx;
+		padding-left: 32rpx;
 	}
 
 	.icon {
@@ -126,7 +133,9 @@
 		background: #D9D9D9;
 		border-radius: 24rpx;
 		opacity: 0.5;
-		margin: auto;
+		margin-top: 26rpx;
+    margin-left: 236rpx;
+
 	}
 
 	.tip {
@@ -138,18 +147,23 @@
 		color: rgba(255, 255, 255, 0.9);
 		font-style: normal;
 		text-transform: none;
-		margin: 0 20rpx;
+    margin-top: 20rpx;
 	}
 
 	.info {
 		display: flex;
 		flex-direction: column;
+		flex: 1;
+	}
 
+	.version-header {
+		display: flex;
+		align-items: center;
+		gap: 12rpx;
+		margin-bottom: 8rpx;
 	}
 
 	.ver {
-
-
 		font-family: PingFang SC, PingFang SC;
 		font-weight: 500;
 		font-size: 28rpx;
@@ -157,20 +171,25 @@
 		text-align: left;
 		font-style: normal;
 		text-transform: none;
+	}
 
+	.update-dot {
+		width: 12rpx;
+		height: 12rpx;
+		background: #FF3B30;
+		border-radius: 50%;
+		flex-shrink: 0;
 	}
 
 	.size {
-
 		font-family: PingFang SC, PingFang SC;
 		font-weight: 400;
 		font-size: 24rpx;
 		color: #FFFFFF;
-
 		text-align: left;
 		font-style: normal;
 		text-transform: none;
-		opacity: 0.4;
+		opacity: 0.6;
 	}
 
 	.desc-title {
@@ -182,14 +201,18 @@
 	.btn-wrap {
 		position: relative;
 		z-index: 1;
-		margin: 74rpx 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+    margin-top: 74rpx;
 	}
 
 	.btn {
 		width: 100%;
 		background: rgba(255, 255, 255, .18);
-		color: #fff;
+		height: 96rpx;
 		border: none;
+		border-radius: 20rpx;
 		font-family: PingFang SC, PingFang SC;
 		font-weight: 600;
 		font-size: 28rpx;
@@ -198,5 +221,8 @@
 		font-style: normal;
 		text-transform: none;
 		padding: 0 !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>

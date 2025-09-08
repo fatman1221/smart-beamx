@@ -103,7 +103,7 @@
     {
       "path": "pages/tabBar/shop/shop",
       "style": {
-        "navigationBarTitleText": "商城",
+        "navigationStyle": "custom",
         "navigationBarBackgroundColor": "#000000",
         "navigationBarTextStyle": "white",
         "backgroundColor": "#000000"

@@ -12,12 +12,18 @@
 				</view>
 			</view>
 		</view>
+    <!-- 广告图片 -->
+    <view class="ad-banner">
+      <image class="ad-image" src="https://images.unsplash.com/photo-1612010167108-3e6bff0e3c70?q=80&w=1600" mode="aspectFill" />
+    </view>
 
 		<!-- 分类chips -->
 		<scroll-view class="chip-row" scroll-x>
 			<view v-for="(c,i) in cats" :key="i" class="chip" :class="{active: curCat===i}" @click="curCat=i">{{ c }}
 			</view>
 		</scroll-view>
+
+
 
 		<!-- 商品栅格 两列 -->
 		<scroll-view scroll-y class="goods-area">
@@ -170,6 +176,19 @@
 	.chip.active {
 		background: #3a3a3a;
 		color: #fff
+	}
+
+	/* 广告图片样式 */
+	.ad-banner {
+		width: 100%;
+		height: 352rpx;
+		margin: 24rpx 0;
+		overflow: hidden;
+	}
+
+	.ad-image {
+		width: 100%;
+		height: 100%;
 	}
 
 	.goods-area {

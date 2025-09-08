@@ -1,9 +1,12 @@
 <template>
+  <view style="position: relative;height: 100rpx;">
+    <custom-nav-bar title="问题反馈" />
+  </view>
 	<view class="feedback-page">
-		<view class="page-nav">
+<!-- 		<view class="page-nav">
 			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" /><text
 				class="page-title">问题反馈</text>
-		</view>
+		</view> -->
 		<!-- 反馈表单 -->
 		<view class="form-container">
 			<!-- 订单号 -->
@@ -77,8 +80,14 @@
 </template>
 
 <script>
+	import CustomNavBar from "@/components/custom-nav-bar.vue"
+	import Idx from "@/components/index.vue"
 	export default {
 		name: 'FeedbackPage',
+		components: {
+			"custom-nav-bar":CustomNavBar,
+			"i-d-x": Idx
+		},
 		data() {
 			return {
 				feedbackForm: {

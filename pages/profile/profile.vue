@@ -385,7 +385,7 @@
 	/* 个人信息卡片 */
 	.profile-card {
 		margin: 20px;
-		background: rgba(255, 255, 255, 0.05);
+		background: #1A1A1A;
 		backdrop-filter: blur(20px);
 		border-radius: 32rpx;
 

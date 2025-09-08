@@ -133,7 +133,7 @@
 	.input-area {
 	position: relative;
 		z-index: 1;
-		margin: 0 24px 80px 24px;
+		margin: 0 24rpx 144rpx;
 	}
 
 	.phone-input {
@@ -141,13 +141,13 @@
 
 		height: 96rpx;
 		line-height: 96rpx;
-		background: #1A1A1A;
+		background: rgba(26, 26, 26, 1);
 		border-radius: 24rpx;
 		text-align: center;
 
 		font-family: PingFang SC, PingFang SC;
 		font-weight: 400;
-		font-size: 14px;
+		font-size: 28rpx;
 		color: #FFFFFF;
 
 		font-style: normal;
@@ -173,11 +173,9 @@
 		width: 100%;
 		height: 96rpx;
 		line-height: 96rpx;
-		color: #fff;
 		border: none;
 		background: #3F3F3F;
 		border-radius: 20rpx;
-		font-family: PingFang SC, PingFang SC;
 		font-weight: 600;
 		font-size: 28rpx;
 		color: #FFFFFF;

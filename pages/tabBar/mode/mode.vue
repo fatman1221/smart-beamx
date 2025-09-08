@@ -117,13 +117,14 @@
 	}
 
 	.mode-color {
-		height: 66rpx;
-		border-radius: 16rpx;
+		height: 76rpx;
+		border-radius: 8rpx;
 		margin-top: 26rpx
 	}
 
 	.add-btn {
-		width: 100%;
+    margin-left: 24rpx;
+    margin-right: 24rpx;
 		color: #fff;
 		border: none;
 		height: 80rpx;

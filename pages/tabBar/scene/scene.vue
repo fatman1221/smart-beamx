@@ -1,6 +1,5 @@
 <template>
-	<custom-nav-bar/>
-	<view class="scene-page" >
+	<view class="scene-page">
 		
 		<!-- 顶部切换 速度/音乐 + LED 标签 + 电源 -->
 		<view class="top-bar">

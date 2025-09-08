@@ -20,12 +20,17 @@
 			</view>
 
 			<!-- 消息通知 -->
-			<view class="setting-item">
+			<view class="setting-item notification-item">
 				<view class="setting-info">
 					<text class="setting-label">消息通知</text>
 				</view>
-				<view class="setting-control">
-					<switch :checked="notificationEnabled" @change="toggleNotification" color="#FE7E00" style="transform:scale(0.7)" />
+				<view class="setting-control notification-control">
+					<switch :checked="notificationEnabled" @change="toggleNotification" color="#FE7E00"
+                  style="transform:scale(0.7) ;  "
+
+
+
+          />
 				</view>
 			</view>
 		</view>
@@ -41,6 +46,13 @@
 					<text class="version-number">{{ appVersion }}</text>
 					<image class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 				</view>
+			</view>
+		</view>
+
+		<!-- 退出登录按钮 -->
+		<view class="logout-section">
+			<view class="logout-button" @click="logout">
+				<text class="logout-text">退出登录</text>
 			</view>
 		</view>
 
@@ -143,6 +155,37 @@
 						showCancel: false
 					})
 				}, 2000)
+			},
+			logout() {
+				uni.showModal({
+					title: '退出登录',
+					content: '确定要退出登录吗？',
+					confirmText: '退出',
+					cancelText: '取消',
+					confirmColor: '#FF3B30',
+					success: (res) => {
+						if (res.confirm) {
+							// 清除本地存储的用户信息
+							uni.removeStorageSync('userInfo')
+							uni.removeStorageSync('token')
+							uni.removeStorageSync('isLoggedIn')
+							
+							// 显示退出成功提示
+							uni.showToast({
+								title: '已退出登录',
+								icon: 'success',
+								duration: 1500
+							})
+							
+							// 延迟跳转到登录页面
+							setTimeout(() => {
+								uni.reLaunch({
+									url: '/pages/login/login'
+								})
+							}, 1500)
+						}
+					}
+				})
 			}
 		},
 		onLoad() {
@@ -191,56 +234,84 @@
 		margin-top: 8rpx;
 	}
 
-	.back-icon {
-		font-size: 22pt;
-		line-height: 1;
-	}
 
-	.settings-group {
-		margin-bottom: 24rpx;
-		background: #1A1A1A;
-		border-radius: 32rpx;
-	}
+  /* container：把顶部间距放在容器 padding 上（统一管理） */
+  .settings-group {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24rpx;
+    background: #1A1A1A;
+    border-radius: 32rpx;
+    box-sizing: border-box;
 
-	.setting-item {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 16px 20px;
-		border-bottom: none;
-	}
+    /* 关键：顶部 12rpx，右 20rpx，底部 16rpx，左 32rpx（你要的左内边距） */
+    padding: 12rpx 20rpx 16rpx 32rpx;
+  }
 
-	.setting-item:last-child {
-		border-bottom: none;
-	}
+  /* 每个 item 固定高度 92rpx，去掉垂直内边距，靠 flex 垂直居中 */
+  .setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-	.setting-info {
-		display: flex;
-		align-items: center;
-		flex: 1;
-	}
+    /* 固定高度 */
+    height: 92rpx;
 
-	.setting-icon {
-		font-size: 20px;
-		margin-right: 16px;
-		width: 24px;
-		text-align: center;
-	}
+    /* 很重要：不要再用 vertical padding，否则会超高 */
+    padding: 0;
 
-	.setting-label {
+    /* 让 item 内部的宽度按容器内边距来布局 */
+    box-sizing: border-box;
+    border-bottom: none;
+    margin: 0; /* 清除多余外边距 */
+  }
 
-		
+  /* 如果你之前用了 first-child 的 margin-top，请移除它（下行可删） */
+  /* .setting-item:first-child { margin-top: 12rpx; }  <-- 不需要了 */
 
-		height: 40rpx;
-		line-height: 40rpx;
-		font-family: PingFang SC, PingFang SC;
-		font-weight: 500;
-		font-size: 28rpx;
-		color: rgba(255,255,255,0.9);
-		text-align: left;
-		font-style: normal;
-		text-transform: none;
-	}
+  /* 左侧信息区域保持伸缩 */
+  .setting-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  /* label 不要用绝对定位，移除 height/left，交给 flex 居中 */
+  .setting-label {
+    /* 移除 height/line-height 的强制值以避免布局冲突 */
+    height: auto;
+    line-height: normal;
+
+    font-family: "PingFang SC", PingFang SC;
+    font-weight: 500;
+    font-size: 28rpx;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: left;
+    margin: 0; /* 避免浏览器默认间距 */
+  }
+
+  /* 右侧控制（箭头 / switch）如果需要微调位置可以用 margin-right */
+  .setting-control {
+    display: flex;
+    align-items: center;
+    gap: 8rpx; /* 控件之间的间距 */
+    margin-right: 0; /* 已由容器右 padding 控制距离 */
+  }
+
+  /* 消息通知按钮特殊样式 - 与上方前进按钮对齐 */
+  .notification-control {
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  /* 你的 image 箭头或 icon 大小 */
+  .setting-arrow {
+    width: 28rpx;
+    height: 28rpx;
+  }
+
+  /* switch 缩放会影响其视觉大小，但不改变父高度（父高度固定） */
+
 
 	.version-info {
 		display: flex;
@@ -259,6 +330,8 @@
 		gap: 8px;
 	}
 
+
+
 	.setting-value {
 		font-size: 14px;
 		color: #999999;
@@ -267,6 +340,7 @@
 	.setting-arrow {
 		width: 36rpx;
 		height: 36rpx;
+
 		transform: rotateY(180deg);
 		opacity: 0.5;
 	}
@@ -340,5 +414,39 @@
 	.selected-icon {
 		font-size: 16px;
 		color: #007AFF;
+	}
+
+	/* 退出登录按钮样式 */
+	.logout-section {
+		position: relative;
+		z-index: 1;
+		margin-top: 864rpx;
+		margin-left: 12rpx;
+		margin-right: 12rpx;
+		padding: 0;
+	}
+
+	.logout-button {
+		width: 100%;
+		height: 88rpx;
+		background: rgba(63, 63, 63, 1);
+		border-radius: 20rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+	.logout-button:active {
+		transform: scale(0.98);
+		background: rgba(63, 63, 63, 0.8);
+	}
+
+	.logout-text {
+		font-size: 32rpx;
+		color: #ffffff;
+		font-weight: 500;
+		text-align: center;
 	}
 </style>

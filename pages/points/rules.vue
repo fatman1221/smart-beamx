@@ -17,19 +17,74 @@
 </template>
 
 <script>
-export default { data:()=>({cur:0}) }
+export default {data: () => ({cur: 0})}
 </script>
 
 <style scoped>
-.rules-page{background:#000;min-height:100vh;color:#fff}
-.tabs{display:flex;justify-content:space-around;padding:14px 0;border-bottom:1px solid #222}
-.tab{color:#bdbdbd;position:relative;padding-bottom:6px}
-.tab.active{color:#fff}
-.tab.active::after{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:56px;height:3px;background:#fff;border-radius:2px}
-.list{padding:14px 16px 24px}
-.item{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;border:1px solid #2f2f2f;border-radius:14px;padding:16px;margin-bottom:12px}
-.title{font-size:16px;font-weight:700}
-.time{display:block;color:#9a9a9a;margin-top:6px}
-.delta{font-size:20px;font-weight:800}
+.rules-page {
+  background: #000;
+  min-height: 100vh;
+  color: #fff
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 14px 0;
+  border-bottom: 1px solid #222
+}
+
+.tab {
+  color: #bdbdbd;
+  position: relative;
+  padding-bottom: 6px
+}
+
+.tab.active {
+  color: #fff
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 16px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px
+}
+
+.list {
+  padding: 14px 16px 24px
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1A1A1A;;
+  border: 1px solid #2f2f2f;
+  border-radius: 12rpx;
+  padding: 16px;
+  margin-bottom: 12px
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700
+}
+
+.time {
+  display: block;
+  color: #9a9a9a;
+  margin-top: 6px
+}
+
+.delta {
+  font-size: 20px;
+  font-weight: 800
+}
 </style>
 

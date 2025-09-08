@@ -5,7 +5,7 @@
 			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset=""
 				mode="aspectFill" />
 		</view>
-		<view class="title">{{ title }}</view>
+		<view class="title" v-if="title">{{ title }}</view>
 	</view>
 </template>
 
@@ -58,6 +58,9 @@
 		position: absolute;
 		width: 40rpx;
 		height: 40rpx;
+		top: 34%;
+		left: 48rpx;
+	
 	}
 
 	.custom-navbar {
@@ -67,7 +70,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		background-color: #000000;
+		background-color:rgba(0, 0, 0, 0.5) !important;
 		box-sizing: border-box;
 	}
 
@@ -86,7 +89,7 @@
 		transform: translate(-50%, -50%);
 		/* 50%为自身尺寸的一半 */
 		text-align: center;
-		font-size: 36rx;
+		font-size: 36rpx;
 		font-weight: bold;
 	}
 </style>
