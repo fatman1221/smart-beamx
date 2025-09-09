@@ -257,42 +257,33 @@
     "navigationBarBackgroundColor": "#000000",
     "backgroundColor": "#000000"
   },
-  "tabBar": {
-    "color": "#666666",
-    "selectedColor": "#ffffff",
-    "backgroundColor": "#000000",
-    "borderStyle": "white",
-    "list": [
-      {
-        "pagePath": "pages/tabBar/home/home",
-        "iconPath": "/static/tabbar/home.png",
-        "selectedIconPath": "static/tabbar/home-active.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/tabBar/mode/mode",
-        "iconPath": "static/tabbar/mode.png",
-        "selectedIconPath": "static/tabbar/mode-active.png",
-        "text": "模式"
-      },
-      {
-        "pagePath": "pages/tabBar/scene/scene",
-        "iconPath": "static/tabbar/scene.png",
-        "selectedIconPath": "static/tabbar/scene-active.png",
-        "text": "场景"
-      },
-      {
-        "pagePath": "pages/tabBar/shop/shop",
-        "iconPath": "static/tabbar/shop.png",
-        "selectedIconPath": "static/tabbar/shop.png",
-        "text": "商城"
-      },
-      {
-        "pagePath": "pages/tabBar/my/my",
-        "iconPath": "static/tabbar/my.png",
-        "selectedIconPath": "static/tabbar/my-active.png",
-        "text": "我的"
-      }
-    ]
-  }
+ "tabBar": {
+  "custom": true,
+  "color": "#666666",
+  "selectedColor": "#ffffff",
+  "backgroundColor": "#000000",
+  "borderStyle": "white",
+  "list": [
+    {
+      "pagePath": "pages/tabBar/home/home",
+      "text": "首页"
+    },
+    {
+      "pagePath": "pages/tabBar/mode/mode",
+      "text": "模式"
+    },
+    {
+      "pagePath": "pages/tabBar/scene/scene",
+      "text": "场景"
+    },
+    {
+      "pagePath": "pages/tabBar/shop/shop",
+      "text": "商城"
+    },
+    {
+      "pagePath": "pages/tabBar/my/my",
+      "text": "我的"
+    }
+  ]
+}
 }

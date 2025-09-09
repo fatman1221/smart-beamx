@@ -92,7 +92,7 @@
 		position: relative;
 		z-index: 1;
 		padding: 8px 0;
-		background: rgba(255, 255, 255, .06);
+		background: rgba(26, 26, 26, 1);
 		border-radius: 16px;
 		backdrop-filter: blur(18px);
 	}

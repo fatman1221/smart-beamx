@@ -4,7 +4,10 @@
 		<view class="banner">
 			<image class="banner-img" :src="bannerUrl" mode="aspectFill" />
 			<view class="top-bar">
-				<text class="loc">📍 {{ city }}</text>
+				<view class="loc">
+					<image class="loc-icon" src="@/static/icons/shop/location.png" mode="aspectFit" />
+					<text class="loc-text">{{ city }}</text>
+				</view>
 
 				<view class="search" @click="goSearch">
 					<!-- <input type="text" placeholder="请输入关键字" /> -->
@@ -14,7 +17,7 @@
 		</view>
     <!-- 广告图片 -->
     <view class="ad-banner">
-      <image class="ad-image" src="https://images.unsplash.com/photo-1612010167108-3e6bff0e3c70?q=80&w=1600" mode="aspectFill" />
+      <image class="ad-image" src="https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=1600" mode="aspectFill" />
     </view>
 
 		<!-- 分类chips -->
@@ -40,12 +43,17 @@
 				</view>
 			</view>
 		</scroll-view>
+		<CustomTabBar />
 	</view>
 </template>
 
 <script>
+
+import CustomTabBar   from "../../../custom-tab-bar/index.vue";
+
 	export default {
 		name: 'ShopPage',
+		components: { CustomTabBar},
 		data() {
 			return {
 				city: '深圳市',
@@ -93,14 +101,30 @@
 <style scoped>
 	.shop-page {
 		background: #000;
+		background-image: url('/static/icons/background.svg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		min-height: 100vh;
-		color: #fff
+		color: #fff;
+		position: relative;
+	}
+
+	.shop-page::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: url('/static/icons/background.svg') center/cover no-repeat;
+		opacity: 0.4;
+		pointer-events: none;
+		z-index: 0;
 	}
 
 	.banner {
 		position: relative;
 		/* height: 180px */
 		height: 100rpx;
+		z-index: 1;
 	}
 
 	.banner-img {
@@ -127,9 +151,29 @@
 
 	.loc {
 		background: rgba(0, 0, 0, .5);
-		border: 1px solid #333;
+		border: none !important;
+		outline: none;
 		border-radius: 16px;
-		padding: 6px 10px
+		padding: 6px 10px;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.loc-icon {
+		width: 24rpx;
+		height: 24rpx;
+		display: block;
+		border: none !important;
+		outline: none;
+		box-shadow: none;
+		background: transparent;
+		border-radius: 0;
+	}
+
+	.loc-text {
+		color: #ffffff;
+		font-size: 24rpx;
 	}
 
 	.search {
@@ -151,7 +195,9 @@
 
 	.chip-row {
 		white-space: nowrap;
-		padding: 12px 12px 8px
+		padding: 12px 12px 8px;
+		position: relative;
+		z-index: 1;
 	}
 
 	.chip {
@@ -192,12 +238,14 @@
 	}
 
 	.goods-area {
-		padding: 6px 10px 90px
+		padding: 6px 10px 90px;
+		position: relative;
+		z-index: 1;
 	}
 
 	.card-item {
-		background: #121212;
-		border-radius: 18px;
+		background: rgba(26, 26, 26, 1);
+		border-radius: 18rpx;
 		overflow: hidden;
 		margin: 0 6px 12px 6px;
 		width: calc(50% - 12px);
@@ -216,7 +264,10 @@
 
 	.title {
 		display: block;
-		line-height: 1.4
+		line-height: 1.4;
+    font-size: 24rpx;
+    height: 80rpx;
+    width: 324rpx;
 	}
 
 	.price-row {
@@ -232,6 +283,7 @@
 	}
 
 	.asin {
-		opacity: .7
+		opacity: .7;
+    font-size:20rpx;
 	}
 </style>

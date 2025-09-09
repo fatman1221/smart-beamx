@@ -6,6 +6,9 @@
 				mode="aspectFill" />
 		</view>
 		<view class="title" v-if="title">{{ title }}</view>
+		<view class="right" v-if="showSave">
+			<button class="save-btn" @click="handleSave">保存</button>
+		</view>
 	</view>
 </template>
 
@@ -16,6 +19,14 @@
 			title: {
 				type: String,
 				default: '标题'
+			},
+			onBack: {
+				type: Function,
+				default: null
+			},
+			showSave: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -31,9 +42,16 @@
 		},
 		methods: {
 			goBack() {
-				uni.navigateBack({
-					delta: 1
-				})
+				if (this.onBack && typeof this.onBack === 'function') {
+					this.onBack()
+				} else {
+					uni.navigateBack({
+						delta: 1
+					})
+				}
+			},
+			handleSave() {
+				this.$emit('save')
 			},
 			getHeight() {
 				const systemInfo = uni.getSystemInfoSync();
@@ -64,14 +82,15 @@
 	}
 
 	.custom-navbar {
-		width: 100%;
-		position: fixed;
-		z-index: 9999999;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		background-color:rgba(0, 0, 0, 0.5) !important;
-		box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent; /* 完全透明 */
+
+    backdrop-filter: blur(20px);
+    border-bottom: none;
+    z-index: 999;
 	}
 
 	.left,
@@ -91,5 +110,25 @@
 		text-align: center;
 		font-size: 36rpx;
 		font-weight: bold;
+		color: #ffffff;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	}
+
+	.right {
+		position: absolute;
+		right: 48rpx;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.save-btn {
+		background: transparent;
+		color: rgba(255, 255, 255, 1);
+		border: none;
+		font-size: 24rpx;
+		font-weight: 500;
+		white-space: nowrap;
+		padding: 8rpx 16rpx;
+		min-width: 60rpx;
 	}
 </style>

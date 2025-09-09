@@ -99,12 +99,17 @@
 <!--				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />-->
 <!--			</view>-->
 		</view>
+
+    <CustomTabBar current="/pages/tabBar/home/home" />
+
 	</view>
 </template>
 
 <script>
+  import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 	export default {
 		name: 'MyPage',
+    components: { CustomTabBar},
 		data() {
 			return {
 				useAbsProfile: true,
@@ -379,18 +384,21 @@
 		position: relative;
 		overflow: hidden;
 		transition: all 0.3s ease;
+
 	}
 
 	.user-info-area.flex-mode {
 		display: flex;
 		align-items: center;
-	}
+    margin-bottom: 12rpx ;
+
+  }
 
 	.user-info-area.flex-mode .user-avatar {
 		position: static;
 		width: 64pt;
 		height: 64pt;
-		margin-right: 12pt;
+		margin-right: 24rpx;
 	}
 
 	.user-info-area.flex-mode .user-details {
@@ -585,18 +593,15 @@
 
 	/* 头像与文案绝对定位变量，可按需填写 */
 	.user-section.abs-profile {
-		--avatar-left: 20pt;
-		--avatar-top: 8pt;
-		--avatar-size: 64pt;
+		--avatar-left: 40rpx;
+		--avatar-top: 16rpx;
+		--avatar-size: 128rpx;
 		/* 与蓝湖 64pt 一致 */
-		--name-left: 100pt;
-		--name-top: 24pt;
-		--name-width: 220pt;
-		--name-font: 20pt;
-		--phone-left: 100pt;
-		--phone-top: 44pt;
-		--phone-width: 200pt;
-		--phone-font: 12pt;
+		--name-left: 200rpx;
+		--name-top: 48rpx;
+		--name-width: 440rpx;
+		--name-font: 40rpx;
+
 	}
 
 	.user-section.abs-profile .user-info-area .user-avatar {

@@ -22,16 +22,20 @@
 				<view class="mode-color" :style="{background:m.bg}"></view>
 			</view>
 		</view>
+		<CustomTabBar />
 	</view>
 </template>
 
 <script>
+import CustomTabBar   from "../../../custom-tab-bar/index.vue";
+
 	import mode1 from "@/static/icons/home/mode-1-icon2x.png"
 	import mode2 from "@/static/icons/home/mode-2-icon2x.png"
 	import mode3 from "@/static/icons/home/mode-3-icon2x.png"
 	import mode4 from "@/static/icons/home/mode-4-icon2x.png"
 	export default {
 		name: 'ModePage',
+		components: { CustomTabBar},
 		data() {
 			return {
 				presets: [{

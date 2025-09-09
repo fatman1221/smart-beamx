@@ -26,17 +26,20 @@
 			<text class="val">0 mph</text>
 			<text class="full">⤢</text>
 		</view>
+		<CustomTabBar />
 	</view>
 </template>
 
 <script>
 	import CustomNavBar from "@/components/custom-nav-bar.vue"
 	import Idx from "@/components/index.vue"
+  import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 	export default {
 		name: 'ScenePage',
 		components: {
-			"custom-nav-bar":CustomNavBar,
-			"i-d-x": Idx
+      CustomTabBar,
+			"i-d-x": Idx,
+      'custom-tab-bar': () => import('@/custom-tab-bar/index.vue')
 		},
 		data() {
 			return {

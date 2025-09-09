@@ -8,7 +8,12 @@
       @click="switchTab(index)"
     >
       <view class="tab-icon">
-        <text class="icon-text">{{ item.icon }}</text>
+        <image 
+          :src="activeTab === index ? item.selectedIcon : item.icon" 
+          class="icon-image" 
+          mode="aspectFit"
+          @error="handleImageError"
+        />
       </view>
       <text class="tab-text">{{ item.text }}</text>
     </view>
@@ -25,27 +30,32 @@ export default {
         {
           pagePath: 'pages/tabBar/home/home',
           text: '首页',
-          icon: '●'
+          icon: '/static/tabbar/home.png',
+          selectedIcon: '/static/tabbar/home-active.png'
         },
         {
           pagePath: 'pages/tabBar/mode/mode',
           text: '模式',
-          icon: '◆'
+          icon: '/static/tabbar/mode.png',
+          selectedIcon: '/static/tabbar/mode-active.png'
         },
         {
           pagePath: 'pages/tabBar/scene/scene',
           text: '场景',
-          icon: '▲'
+          icon: '/static/tabbar/scene.png',
+          selectedIcon: '/static/tabbar/scene-active.png'
         },
         {
           pagePath: 'pages/tabBar/shop/shop',
           text: '商城',
-          icon: '■'
+          icon: '/static/tabbar/shop.png',
+          selectedIcon: '/static/tabbar/shop-active.png'
         },
         {
           pagePath: 'pages/tabBar/my/my',
           text: '我的',
-          icon: '◉'
+          icon: '/static/tabbar/my.png',
+          selectedIcon: '/static/tabbar/my-active.png'
         }
       ]
     }
@@ -64,6 +74,8 @@ export default {
     
     updateActiveTab() {
       const pages = getCurrentPages()
+      if (pages.length === 0) return
+      
       const currentPage = pages[pages.length - 1]
       const route = currentPage.route
       
@@ -71,10 +83,29 @@ export default {
       if (index !== -1) {
         this.activeTab = index
       }
+    },
+    
+    handleImageError(e) {
+      console.error('图标加载失败:', e)
     }
   },
   
   mounted() {
+    console.log('自定义tabBar已加载')
+    console.log('tabList:', this.tabList)
+    console.log('图标路径检查:')
+    this.tabList.forEach((item, index) => {
+      console.log(`Tab ${index}:`, {
+        text: item.text,
+        icon: item.icon,
+        selectedIcon: item.selectedIcon
+      })
+    })
+    this.updateActiveTab()
+  },
+  
+  onShow() {
+    console.log('自定义tabBar显示')
     this.updateActiveTab()
   }
 }
@@ -86,12 +117,14 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 70px;
-  background-color: #000000;
-  border-top: 1px solid #333333;
+  height: 112rpx;
+  background-color: rgba(26, 26, 26, 1);
+  border-top: 1rpx solid #333333;
+  border-radius: 24rpx 24rpx 0 0;
   display: flex;
   z-index: 1000;
   padding-bottom: env(safe-area-inset-bottom);
+
 }
 
 .tab-item {
@@ -100,10 +133,15 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8rpx;
   transition: all 0.3s ease;
   color: #666666;
-  padding: 8px 0;
+  padding: 8rpx 0;
+  cursor: pointer;
+}
+
+.tab-item:active {
+  transform: scale(0.95);
 }
 
 .tab-item.active {
@@ -111,47 +149,36 @@ export default {
 }
 
 .tab-icon {
-  width: 28px;
-  height: 28px;
+  width: 48rpx;
+  height: 48rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 14px;
+  border-radius: 24rpx;
   transition: all 0.3s ease;
+  margin-top: 16rpx;
+  margin-bottom: 10rpx;
 }
 
 .tab-item.active .tab-icon {
   background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10rpx);
 }
 
-.icon-text {
-  font-size: 18px;
+.icon-image {
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+
 }
 
 .tab-text {
-  font-size: 10px;
+  font-size: 24rpx;
   line-height: 1;
+  font-weight: 500;
 }
 
 /* 适配不同屏幕 */
-@media (max-width: 750px) {
-  .custom-tab-bar {
-    height: 60px;
-  }
-  
-  .tab-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 12px;
-  }
-  
-  .icon-text {
-    font-size: 16px;
-  }
-  
-  .tab-text {
-    font-size: 9px;
-  }
-}
+
+
 </style>

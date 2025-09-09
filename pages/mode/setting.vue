@@ -1,10 +1,11 @@
 <template>
 	<view class="setting-page">
+		<custom-nav-bar title="模式设置" :onBack="goBack" :showSave="true" @save="save" />
 		<view class="canvas"></view>
 
 		<text class="label">闪烁模式</text>
 		<view class="pattern-grid">
-			<view class="pbtn" v-for="i in 6" :key="i">
+			<view class="pbtn" v-for="i in 8" :key="i">
 				<img class="star" src="@/static/icons/model/star.png" alt="" srcset="" />
 			</view>
 		</view>
@@ -36,7 +37,13 @@
 </template>
 
 <script>
+	import CustomNavBar from "@/components/custom-nav-bar.vue"
+	
 	export default {
+		name: 'ModeSettingPage',
+		components: {
+			CustomNavBar
+		},
 		data() {
 			return {
 				brightness: 70,
@@ -45,11 +52,33 @@
 			}
 		},
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			pick(c) {
 				uni.showToast({
 					title: '选择颜色',
 					icon: 'none'
 				})
+			},
+			save() {
+				uni.showLoading({
+					title: '保存中...'
+				})
+				
+				// 模拟保存过程
+				setTimeout(() => {
+					uni.hideLoading()
+					uni.showToast({
+						title: '保存成功',
+						icon: 'success'
+					})
+					
+					// 保存成功后返回上一页
+					setTimeout(() => {
+						uni.navigateBack()
+					}, 1500)
+				}, 1000)
 			}
 		}
 	}
@@ -131,12 +160,11 @@
 	}
 
 	.op {
-		width: 52px;
-		height: 52px;
-		border-radius: 12px;
-		background: #2a2a2a;
+		width: 80rpx;
+		height: 80rpx;
+		border-radius: 12rpx;
+		background: rgba(255, 255, 255, 0.20);
 		border: 1px solid #444;
-		color: #fff
 	}
 
 	.op.del {
@@ -154,4 +182,5 @@
 		font-weight: 800;
 		border: none;
 	}
+
 </style>

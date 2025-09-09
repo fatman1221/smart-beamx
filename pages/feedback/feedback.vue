@@ -1,6 +1,6 @@
 <template>
   <view style="position: relative;height: 100rpx;">
-    <custom-nav-bar title="问题反馈" />
+    <custom-nav-bar title="问题反馈" :onBack="goBack" />
   </view>
 	<view class="feedback-page">
 <!-- 		<view class="page-nav">
@@ -220,7 +220,7 @@
 		position: absolute;
 		inset: 0;
 		background: url('/static/icons/background.svg') center/cover no-repeat;
-		opacity: .99;
+		opacity: 0.99;
 		pointer-events: none;
 		z-index: 0;
 	}
@@ -260,20 +260,20 @@
 
 	/* 表单区块 */
 	.form-section {
-		margin-bottom: 28px;
+		margin-bottom: 32rpx;
 	}
 
 	.section-title {
 		font-size: 16px;
+    margin-bottom: 16rpx;
 		color: #ffffff;
-		margin-bottom: 24px;
 		display: block;
 		font-weight: 400;
 		opacity: 0.9;
 	}
 
 	.order-title {
-		margin-bottom: 28px;
+		margin-bottom: 28rpx;
 	}
 
 	/* 输入框包装器 */
@@ -296,6 +296,8 @@
 		outline: none;
 		transition: all 0.3s ease;
 		backdrop-filter: blur(20px);
+    padding-left: 32rpx;
+
 
 		word-wrap: break-word;
 		overflow: visible;
@@ -310,6 +312,7 @@
 	.form-input::placeholder {
 		color: rgba(26, 26, 26, 1);
 		font-size: 14pt;
+
 	}
 
 	/* 文本域样式 */
@@ -445,7 +448,7 @@
 
 
 		border: none;
-		border-radius: 16px;
+    font-size: 28rpx;
 
 		font-weight: 600;
 		transition: all 0.3s ease;
@@ -454,13 +457,9 @@
 
 
 
-		background: #3F3F3F;
+		background: rgba(63, 63, 63, 1);
 		border-radius: 20rpx;
-
-
 		font-family: PingFang SC, PingFang SC;
-		font-weight: 600;
-		font-size: 28rpx;
 		color: #FFFFFF;
 
 		text-align: center;

@@ -28,7 +28,7 @@
           <view class="platform-icon wechat">
             <image src="/static/icons/wechat.svg" mode="aspectFit"></image>
           </view>
-          <text class="platform-name">微信</text>
+          <text class="platform-name">Google</text>
         </view>
         
         <view class="platform-item" @click="shareToLine">
