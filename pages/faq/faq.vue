@@ -5,7 +5,7 @@
 			<text class="page-title">常见问题</text>
 		</view>
 
-		<view class="faq-list">
+		<view class="faq-container">
 			<view v-for="(faq, index) in faqs" :key="index" class="faq-item">
 				<view class="faq-question" @click="toggleExpand(index)">
 					<text class="question-text">{{ faq.question }}</text>
@@ -20,6 +20,10 @@
 					<text class="answer-text">{{ faq.answer }}</text>
 				</view>
 			</view>
+		</view>
+		
+		<view class="contact-info">
+			<text class="contact-text">您可以发送邮件到xxx@xxx.com 我们将尽快回复您。</text>
 		</view>
 	</view>
 </template>
@@ -47,16 +51,16 @@
 		},
 		methods: {
 			goBack() {
-				const pages = getCurrentPages && getCurrentPages()
-				if (pages && pages.length > 1) {
-					uni.navigateBack({
-						delta: 1
-					})
-				} else {
-					uni.switchTab({
-						url: '/pages/tabBar/my/my'
-					})
-				}
+				console.log('返回键被点击')
+				uni.navigateBack({
+					delta: 1,
+					fail: () => {
+						console.log('返回失败，跳转到我的页面')
+						uni.switchTab({
+							url: '/pages/tabBar/my/my'
+						})
+					}
+				})
 			},
 			toggleExpand(index) {
 				const expandedIndex = this.expandedItems.indexOf(index)
@@ -82,28 +86,25 @@
 		padding: 20px;
 	}
 
-	.faq-page::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: url('/static/icons/background.svg') center/cover no-repeat;
-		opacity: .99;
-		pointer-events: none;
-		z-index: 0;
-	}
+
 
 	.page-nav {
-		position: sticky;
+		position: fixed;
 		top: 0;
+		left: 0;
+		right: 0;
 		text-align: center;
-		padding: 0 0 22rpx;
+		background-color: #1a1a1a;
+		width: 100%;
+		padding: 44rpx 0 22rpx;
 		z-index: 2;
 	}
 
 	.page-title {
 		font-size: 20px;
 		color: #fff;
-		margin: auto;
+		margin-bottom: 22rpx;
+		padding-bottom: 22rpx;
 	}
 
 	.nav-back {
@@ -112,6 +113,8 @@
 		height: 40rpx;
 		display: flex;
 		margin-top: 8rpx;
+		left: 16rpx;
+		z-index: 10;
 	}
 
 
@@ -128,15 +131,17 @@
 		text-transform: none;
 	}
 
-	.faq-list {
-		margin-top: 50rpx;
+	.faq-container {
+		margin-top: 120rpx;
+		background-color: #1a1a1a;
+		border-radius: 0rpx;
+		overflow: hidden;
 	}
 
 	.faq-item {
-		background-color: #1a1a1a;
-		border: 1px solid #333333;
-		border-radius: 12px;
-		margin-bottom: 12px;
+		background-color: transparent;
+		border: none;
+		margin-bottom: 0;
 		overflow: hidden;
 	}
 
@@ -169,7 +174,7 @@
 
 	.faq-answer {
 		padding: 0 20px 20px;
-		border-top: 1px solid #333333;
+		background-color: #000000;
 	}
 
 	.answer-text {
@@ -177,5 +182,16 @@
 		color: #cccccc;
 		line-height: 1.6;
 		display: block;
+	}
+
+	.contact-info {
+		margin-top: 999rpx;
+		text-align: center;
+	}
+
+	.contact-text {
+		font-size: 24rpx;
+		color: #cccccc;
+		line-height: 1.5;
 	}
 </style>

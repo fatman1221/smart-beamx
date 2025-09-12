@@ -1,5 +1,10 @@
 <template>
   <view class="rules-page">
+    <view class="page-nav">
+      <image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
+
+      <text class="page-title">积分奖励规则</text>
+    </view>
     <view class="tabs">
       <view class="tab" :class="{active: cur===0}" @click="cur=0">获取积分</view>
       <view class="tab" :class="{active: cur===1}" @click="cur=1">消耗积分</view>
@@ -17,21 +22,35 @@
 </template>
 
 <script>
-export default {data: () => ({cur: 0})}
+export default {
+  data: () => ({cur: 0}),
+  methods: {
+    goBack() {
+      uni.navigateBack({
+        delta: 1
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
 .rules-page {
+  position: relative;
   background: #000;
   min-height: 100vh;
-  color: #fff
+  color: #fff;
 }
+
+
 
 .tabs {
   display: flex;
   justify-content: space-around;
   padding: 14px 0;
-  border-bottom: 1px solid #222
+  position: relative;
+  background: #1A1A1A;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.3)
 }
 
 .tab {
@@ -49,7 +68,7 @@ export default {data: () => ({cur: 0})}
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0;
+  top: 72rpx;
   width: 16px;
   height: 3px;
   background: #fff;
@@ -64,8 +83,8 @@ export default {data: () => ({cur: 0})}
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1A1A1A;;
-  border: 1px solid #2f2f2f;
+  background: #1A1A1A;
+  border: 1px solid rgba(47, 47, 47, 0.2);
   border-radius: 12rpx;
   padding: 16px;
   margin-bottom: 12px
@@ -85,6 +104,41 @@ export default {data: () => ({cur: 0})}
 .delta {
   font-size: 20px;
   font-weight: 800
+}
+
+.page-title {
+  position: absolute;
+  font-size: 36rpx;
+  color: #ffffff;
+  text-align: center;
+  top: 45%;
+  display: flex;
+  max-width: calc(100% - 120rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-back {
+  position: absolute;
+  left: 32rpx;
+  top: 80%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+}
+.page-nav {
+  position: sticky;
+  top: 22rpx;
+  text-align: center;
+  z-index: 2;
+  background: #1A1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96rpx;
+  margin-bottom: 22rpx;
 }
 </style>
 

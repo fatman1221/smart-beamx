@@ -67,8 +67,17 @@ export default {
       this.activeTab = index
       const item = this.tabList[index]
       
-      uni.switchTab({
-        url: `/${item.pagePath}`
+      console.log('切换到页面:', item.pagePath)
+      
+      // 使用 redirectTo 替代 switchTab，因为已经删除了 tabBar 配置
+      uni.redirectTo({
+        url: `/${item.pagePath}`,
+        success: () => {
+          console.log('页面跳转成功:', item.pagePath)
+        },
+        fail: (err) => {
+          console.error('页面跳转失败:', err)
+        }
       })
     },
     
@@ -117,7 +126,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 112rpx;
+  height: 144rpx;
   background-color: rgba(26, 26, 26, 1);
   border-top: 1rpx solid #333333;
   border-radius: 24rpx 24rpx 0 0;
@@ -132,12 +141,13 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8rpx;
   transition: all 0.3s ease;
   color: #666666;
-  padding: 8rpx 0;
+  padding: 16rpx 0 8rpx 0;
   cursor: pointer;
+
 }
 
 .tab-item:active {
@@ -156,7 +166,6 @@ export default {
   justify-content: center;
   border-radius: 24rpx;
   transition: all 0.3s ease;
-  margin-top: 16rpx;
   margin-bottom: 10rpx;
 }
 

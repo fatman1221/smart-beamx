@@ -1,6 +1,9 @@
 <template>
 	<view class="home-page">
-		<!-- 顶部头图+标题区 -->
+    <view class="page-nav">
+      <text class="page-title">智能汽车灯</text>
+    </view>
+    <!-- 顶部头图+标题区 -->
 		<view class="hero">
 			<view class="hero-inner">
 				<!-- 顶部标题 -->
@@ -125,9 +128,15 @@ import mode1 from "@/static/icons/home/mode-1-icon2x.png"
 <style scoped>
 	.home-page {
 		background: #000;
+		background-image: url('/static/icons/background.svg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		min-height: 100vh;
 		color: #fff;
-		padding: 0 16px 24px
+		padding: 0 16px 24px;
+		position: relative;
+		opacity: 0.9;
 	}
 
 	.hero {
@@ -136,6 +145,20 @@ import mode1 from "@/static/icons/home/mode-1-icon2x.png"
 		padding: 28px 16px 16px;
 		background: radial-gradient(80% 60% at 100% 0%, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0) 60%), radial-gradient(70% 60% at 0% 0%, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0) 60%)
 	}
+
+  .page-nav {
+    position: sticky;
+    top: 66rpx;
+    text-align: center;
+    padding: 16px 0;
+    z-index: 2;
+  }
+
+  .page-title {
+    font-size: 36rpx;
+    color: #ffffff;
+  }
+
 
 	.hero::before {
 		content: '';
@@ -315,7 +338,7 @@ import mode1 from "@/static/icons/home/mode-1-icon2x.png"
 	}
 
 	.mode-color {
-		height: 66rpx;
+		height: 76rpx;
 		border-radius: 8rpx;
 		margin-top: 26rpx
 	}

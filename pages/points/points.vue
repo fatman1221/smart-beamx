@@ -1,6 +1,11 @@
 <template>
 	<view class="points-page">
-		<view class="hero">
+    <view class="page-nav">
+      <image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
+
+      <text class="page-title">积分商城</text>
+    </view>
+    <view class="hero">
 			<view class="score-card">
 				<view class="left">
 					<text class="score">{{ points }}</text>
@@ -40,19 +45,22 @@
 			</view>
 		</view>
 
-		<scroll-view scroll-y class="goods-grid">
-			<view class="card" v-for="g in goods" :key="g.id">
-				<image class="cover" :src="g.img" mode="aspectFill" />
-				<view class="info">
-					<text class="title">{{ g.title }}</text>
-					<view class="price-row">
-						<text class="price">$ {{ g.price }}</text>
-						<text class="cart">🛒</text>
-					</view>
-					<text class="asin">ASIN: {{ g.asin }}</text>
-				</view>
-			</view>
-		</scroll-view>
+
+
+    <scroll-view scroll-y class="goods-area">
+      <view class="card-item" v-for="g in goods" :key="g.id" @click="viewProduct(g)">
+        <image class="cover" :src="g.img" mode="aspectFill" />
+        <view class="info">
+          <text class="title">{{ g.title }}</text>
+          <view class="price-row">
+            <text class="price">$ {{ g.price }}</text>
+            <image src="@/static/icons/shop/shopping-cart.png" class="shopping-cart" alt="" srcset="" />
+
+          </view>
+          <text class="asin">ASIN: {{ g.asin }}</text>
+        </view>
+      </view>
+    </scroll-view>
 
 		<!-- 		<view class="search-bar-fixed">
 			<view class="search" @click="goSearch">🔍 请输入关键字</view>
@@ -61,7 +69,13 @@
 </template>
 
 <script>
+	import CustomNavBar from "@/components/custom-nav-bar.vue"
+	
 	export default {
+		name: 'PointsPage',
+		components: {
+			CustomNavBar
+		},
 		data() {
 			return {
 				points: 2488,
@@ -96,6 +110,9 @@
 			this.goods = this.mockGoods()
 		},
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			goRules() {
 				uni.navigateTo({
 					url: '/pages/points/rulesText'
@@ -147,12 +164,38 @@
 <style scoped>
 	.points-page {
 		background: #000;
+		background-image: url('/static/icons/background.svg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		min-height: 100vh;
-		color: #fff
+    opacity: 0.9;
+
+    color: #fff;
+		position: relative;
 	}
 
+	.points-page::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: url('/static/icons/background.svg') center/cover no-repeat;
+		opacity: 0.4;
+		pointer-events: none;
+		z-index: 0;
+	}
+  .shopping-cart {
+    width: 48rpx;
+    height: 48rpx;
+  }
+
 	.hero {
-		padding: 16px
+		padding: 16px;
+		position: relative;
+		z-index: 1;
 	}
 
 	.score-card {
@@ -207,7 +250,7 @@
 		height: 60rpx;
 		line-height: 60rpx;
 		border-radius: 12rpx;
-		border: 2rpx solid rgba(255, 255, 255, 0.46);
+		border: 2rpx solid rgba(255, 255, 255, 0.15);
 		background: #191919;
 		font-family: PingFang SC, PingFang SC;
 		font-weight: 400;
@@ -279,7 +322,9 @@
 		margin: 8px 16px;
 		background: #191919;
 		border-radius: 14px;
-		padding: 16px
+		padding: 16px;
+		position: relative;
+		z-index: 1;
 	}
 
 	.section-title {
@@ -319,7 +364,7 @@
 
 	.claim {
 		background: none !important;
-		border: 1rpx solid #fff;
+		border: 1rpx solid rgba(255, 255, 255, 0.3);
 	}
 
 	.point-img {
@@ -359,7 +404,9 @@
 	.tabs {
 		display: flex;
 		gap: 10px;
-		padding: 12px 16px
+		padding: 12px 16px;
+		position: relative;
+		z-index: 1;
 	}
 
 	.tab {
@@ -384,50 +431,55 @@
 		font-weight: 600;
 	}
 
-	.goods-grid {
-		padding: 0 12px 20px
-	}
+  .goods-area {
+    padding: 6px 10px 90px;
+    position: relative;
+    z-index: 1;
+  }
 
-	.card {
-		background: #121212;
-		border: 1px solid #2f2f2f;
-		border-radius: 18px;
-		overflow: hidden;
-		margin: 0 4px 12px 4px;
-		width: calc(50% - 8px);
-		display: inline-block;
-		vertical-align: top
-	}
+  .card-item {
+    background: rgba(26, 26, 26, 1);
+    border-radius: 18rpx;
+    overflow: hidden;
+    margin: 0 6px 12px 6px;
+    width: calc(50% - 12px);
+    display: inline-block;
+    vertical-align: top
+  }
 
-	.cover {
-		width: 100%;
-		height: 180px
-	}
+  .cover {
+    width: 100%;
+    height: 180px
+  }
 
-	.info {
-		padding: 12px
-	}
+  .info {
+    padding: 10px
+  }
 
-	.title {
-		display: block;
-		line-height: 1.4
-	}
+  .title {
+    display: block;
+    line-height: 1.4;
+    font-size: 24rpx;
+    height: 80rpx;
+    width: 324rpx;
+  }
 
-	.price-row {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin: 6px 0
-	}
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6px 0
+  }
 
-	.price {
-		color: #ff4d4f;
-		font-weight: 800
-	}
+  .price {
+    color: #ff4d4f;
+    font-weight: 800
+  }
 
-	.asin {
-		opacity: .7
-	}
+  .asin {
+    opacity: .7;
+    font-size:20rpx;
+  }
 
 	.search-bar-fixed {
 		position: fixed;
@@ -439,11 +491,46 @@
 		pointer-events: none
 	}
 
+  .page-title {
+    position: absolute;
+    font-size: 36rpx;
+    color: #ffffff;
+    text-align: center;
+    top: 45%;
+    display: flex;
+    max-width: calc(100% - 120rpx);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav-back {
+    position: absolute;
+    left: 32rpx;
+    top: 80%;
+    transform: translateY(-50%);
+    width: 40rpx;
+    height: 40rpx;
+    display: flex;
+  }
+  .page-nav {
+    position: sticky;
+    top:44rpx;
+    text-align: center;
+    padding: 16rpx 32rpx;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 96rpx;
+    margin-bottom: 48rpx;
+  }
+
 	.search {
 		pointer-events: auto;
 		width: 84%;
 		background: #2a2a2a;
-		border: 1px solid #444;
+		border: 1px solid rgba(68, 68, 68, 0.3);
 		border-radius: 24px;
 		color: #cfcfcf;
 		padding: 10px 14px

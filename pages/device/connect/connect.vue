@@ -1,34 +1,37 @@
 <template>
 	<view class="connect-page">
+		<view class="page-nav">
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
+		</view>
 		
-		<!-- 搜索中提示 -->
-		<view v-if="state==='searching'" class="hint-card">
-			<text class="spinner">○</text>
-			<text class="hint-text">正在搜索可发现设备...</text>
-		</view>
+<!--		&lt;!&ndash; 搜索中提示 &ndash;&gt;-->
+<!--		<view v-if="state==='searching'" class="hint-card">-->
+<!--			<text class="spinner">○</text>-->
+<!--			<text class="hint-text">正在搜索可发现设备...</text>-->
+<!--		</view>-->
 
-		<!-- 权限未开弹窗 -->
-		<view v-if="showPermModal" class="modal-mask" @click="closePerm">
-			<view class="modal" @click.stop>
-				<view class="modal-row"><text class="bt">🔵</text><text class="modal-title">蓝牙权限未开启，无法发现设备</text></view>
-				<button class="modal-btn primary" @click="openPerm">好</button>
-			</view>
-		</view>
+<!--		&lt;!&ndash; 权限未开弹窗 &ndash;&gt;-->
+<!--		<view v-if="showPermModal" class="modal-mask" @click="closePerm">-->
+<!--			<view class="modal" @click.stop>-->
+<!--				<view class="modal-row"><text class="bt">🔵</text><text class="modal-title">蓝牙权限未开启，无法发现设备</text></view>-->
+<!--				<button class="modal-btn primary" @click="openPerm">好</button>-->
+<!--			</view>-->
+<!--		</view>-->
 
-		<!-- 搜索失败 -->
-		<view v-if="state==='empty'" class="fail-wrap">
-			<text class="fail-title">搜索失败</text>
-			<view class="fail-card">
-				<text class="fail-dot">✖</text>
-				<text class="fail-text">未发现可匹配的设备</text>
-			</view>
-			<text class="tips">您可以尝试以下方法：</text>
-			<view class="step">1 长按设备电源进入配网...</view>
-			<view class="step">2 重启手机蓝牙...</view>
-			<view class="bottom-bar">
-				<button class="primary-btn" @click="startSearch">重新搜索</button>
-			</view>
-		</view>
+<!--		&lt;!&ndash; 搜索失败 &ndash;&gt;-->
+<!--		<view v-if="state==='empty'" class="fail-wrap">-->
+<!--			<text class="fail-title">搜索失败</text>-->
+<!--			<view class="fail-card">-->
+<!--				<text class="fail-dot">✖</text>-->
+<!--				<text class="fail-text">未发现可匹配的设备</text>-->
+<!--			</view>-->
+<!--			<text class="tips">您可以尝试以下方法：</text>-->
+<!--			<view class="step">1 长按设备电源进入配网...</view>-->
+<!--			<view class="step">2 重启手机蓝牙...</view>-->
+<!--			<view class="bottom-bar">-->
+<!--				<button class="primary-btn" @click="startSearch">重新搜索</button>-->
+<!--			</view>-->
+<!--		</view>-->
 		<view class="search-bar">
 			附近设备
 		</view>
@@ -50,15 +53,29 @@
 	export default {
 		data() {
 			return {
-				state: 'searching', // searching | empty | list
+				state: 'list', // searching | empty | list
 				showPermModal: false,
-				devices: []
+				devices: [
+					{
+						name: 'LED设备1',
+						mac: '246576315654',
+						icon: 'https://images.unsplash.com/photo-1606813907291-76a4d0df2c3b?w=200&h=200&fit=crop'
+					},
+					{
+						name: 'LED设备2',
+						mac: '246576315655',
+						icon: 'https://images.unsplash.com/photo-1606813907291-76a4d0df2c3b?w=200&h=200&fit=crop'
+					}
+				]
 			}
 		},
 		onLoad() {
 			this.mockFlow()
 		},
 		methods: {
+			goBack() {
+				uni.navigateBack()
+			},
 			mockFlow() {
 				// 1. 先模拟弹权限
 				setTimeout(() => {
@@ -120,6 +137,7 @@
 		font-style: normal;
 		text-transform: none;
 		margin-bottom: 44rpx;
+    margin-top: 120rpx;
 		
 		opacity: .4;
 	}
@@ -128,7 +146,28 @@
 		background: #000;
 		min-height: 100vh;
 		color: #fff;
-		padding: 16px
+		padding: 16px;
+		padding-top: 0;
+	}
+
+	.page-nav {
+		position: sticky;
+		top: 48rpx;
+		text-align: center;
+		padding: 16rpx 0;
+		margin-bottom: 44rpx;
+		z-index: 2;
+	}
+
+
+
+	.nav-back {
+		position: absolute;
+		width: 40rpx;
+		height: 40rpx;
+		display: flex;
+		margin-top: 8rpx;
+		margin-left: 24rpx;
 	}
 
 	.hint-card {
@@ -282,7 +321,8 @@
 	.dev-mac {
 		display: block;
 		color: #bdbdbd;
-		margin-top: 6px
+		margin-top: 6px;
+    font-size: 24rpx;
 	}
 
 	.link-btn {

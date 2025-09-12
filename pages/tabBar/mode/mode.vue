@@ -1,6 +1,9 @@
 <template>
 	<view class="mode-page">
-		<view class="top-card">
+    <view class="page-nav">
+      <text class="page-title">模式</text>
+    </view>
+    <view class="top-card">
 			<image class="mode-icon" src="@/static/icons/home/mode-1-icon2x.png" alt="" srcset=""  mode="aspectFill"/>
 			<view class="mode-head">
 				<text class="mode-title">模式名称1</text>
@@ -83,9 +86,15 @@ import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 <style scoped>
 	.mode-page {
 		background: #000;
+		background-image: url('/static/icons/background.svg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		min-height: 100vh;
 		color: #fff;
-		padding: 16px
+		padding: 16px;
+		position: relative;
+		opacity: 0.9;
 	}
 
 	.top-card {
@@ -170,4 +179,16 @@ import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 		margin-right: 8rpx;
 
 	}
+  .page-nav {
+    position: sticky;
+    top: 22rpx;
+    text-align: center;
+    padding: 16px 0;
+    z-index: 2;
+  }
+
+  .page-title {
+    font-size: 36rpx;
+    color: #ffffff;
+  }
 </style>

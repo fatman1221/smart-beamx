@@ -97,7 +97,7 @@
 		width: 40rpx;
 		height: 40rpx;
 		display: flex;
-		margin-top: 8rpx;
+		top: 48rpx;
 	}
 
 	.back-icon {

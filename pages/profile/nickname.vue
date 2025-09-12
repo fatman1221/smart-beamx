@@ -92,7 +92,7 @@
 
 	.nav-back {
 		position: absolute;
-		top: 16rpx;
+		top: 48rpx;
 		width: 40rpx;
 		height: 40rpx;
 		display: flex;

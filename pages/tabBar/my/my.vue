@@ -1,5 +1,6 @@
 <template>
 	<view class="my-page">
+		<custom-tab-bar />
 		<!-- 顶部悬浮导航：返回 + 标题 + 设置（同一行） -->
 		<view class="nav-float">
 			<text class="nav-title">个人中心</text>

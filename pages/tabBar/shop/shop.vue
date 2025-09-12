@@ -1,5 +1,6 @@
 <template>
 	<view class="shop-page">
+<!--		<custom-tab-bar />-->
 		<!-- 顶部横幅 + 城市 + 搜索条 -->
 		<view class="banner">
 			<image class="banner-img" :src="bannerUrl" mode="aspectFill" />
@@ -11,7 +12,7 @@
 
 				<view class="search" @click="goSearch">
 					<!-- <input type="text" placeholder="请输入关键字" /> -->
-					<image class="search-icon" src="@/static/icons/shop/search2x.png" alt="" srcset="" /> 请输入关键字
+					<image class="search-icon" src="@/static/icons/shop/search2x.png" alt="" srcset="" /> 请输入关键词
 				</view>
 			</view>
 		</view>
@@ -122,9 +123,10 @@ import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 
 	.banner {
 		position: relative;
-		/* height: 180px */
-		height: 100rpx;
+		height: 120rpx;
+		top: 66rpx;
 		z-index: 1;
+		margin-bottom: 20rpx;
 	}
 
 	.banner-img {
@@ -180,6 +182,7 @@ import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 		flex: 1;
 		color: #cfcfcf;
 		height: 64rpx;
+    width: 508rpx;
 		line-height: 64rpx;
 		background: #363636;
 		border-radius: 999rpx;
@@ -191,6 +194,7 @@ import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 		width: 30rpx;
 		height: 30rpx;
 		margin-left: 32rpx;
+    margin-right: 8rpx;
 	}
 
 	.chip-row {
@@ -228,13 +232,18 @@ import CustomTabBar   from "../../../custom-tab-bar/index.vue";
 	.ad-banner {
 		width: 100%;
 		height: 352rpx;
-		margin: 24rpx 0;
+		margin: 44rpx 0 24rpx 0;
 		overflow: hidden;
+		position: relative;
+		z-index: 1;
+		border-radius: 12rpx;
 	}
 
 	.ad-image {
 		width: 100%;
 		height: 100%;
+		position: relative;
+		z-index: 1;
 	}
 
 	.goods-area {

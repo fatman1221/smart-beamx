@@ -119,9 +119,9 @@
 						icon: 'success'
 					})
 
-					// 登录成功后直接切换到“我的”Tab，并通知登录状态
+					// 登录成功后直接切换到"我的"页面，并通知登录状态
 					setTimeout(() => {
-						uni.switchTab({
+						uni.redirectTo({
 							url: '/pages/tabBar/my/my'
 						})
 						setTimeout(() => {

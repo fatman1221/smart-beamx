@@ -1,12 +1,10 @@
 <template>
-  <view style="position: relative;height: 100rpx;">
-    <custom-nav-bar title="问题反馈" :onBack="goBack" />
-  </view>
+
 	<view class="feedback-page">
-<!-- 		<view class="page-nav">
-			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" /><text
-				class="page-title">问题反馈</text>
-		</view> -->
+		<view class="page-nav">
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
+			<text class="page-title">问题反馈</text>
+		</view>
 		<!-- 反馈表单 -->
 		<view class="form-container">
 			<!-- 订单号 -->
@@ -106,16 +104,16 @@
 		},
 		methods: {
 			goBack() {
-				const pages = getCurrentPages && getCurrentPages()
-				if (pages && pages.length > 1) {
-					uni.navigateBack({
-						delta: 1
-					})
-				} else {
-					uni.switchTab({
-						url: '/pages/tabBar/my/my'
-					})
-				}
+				console.log('返回键被点击')
+				uni.navigateBack({
+					delta: 1,
+					fail: () => {
+						console.log('返回失败，跳转到我的页面')
+						uni.switchTab({
+							url: '/pages/tabBar/my/my'
+						})
+					}
+				})
 			},
 			// 上传图片
 			uploadImage() {
@@ -225,27 +223,39 @@
 		z-index: 0;
 	}
 
-	.page-nav {
-		position: sticky;
-		top: 0;
-		text-align: center;
-		padding: 16px 0;
-		z-index: 2;
-	}
+  .page-title {
+    position: absolute;
+    font-size: 36rpx;
+    color: #ffffff;
+    text-align: center;
+    top: 45%;
+    display: flex;
+    max-width: calc(100% - 120rpx);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-	.page-title {
-		font-size: 20px;
-		color: #fff;
-	}
-
-	.nav-back {
-		position: absolute;
-		width: 40rpx;
-		height: 40rpx;
-		display: flex;
-		margin-top: 8rpx;
-		margin-left: 20rpx;
-	}
+  .nav-back {
+    position: absolute;
+    left: 24rpx;
+    top: 80%;
+    transform: translateY(-50%);
+    width: 40rpx;
+    height: 40rpx;
+    display: flex;
+  }
+  .page-nav {
+    position: sticky;
+    top: 0;
+    text-align: center;
+    padding: 16rpx 32rpx;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 88rpx;
+  }
 
 	.back-icon {
 		font-size: 22pt;

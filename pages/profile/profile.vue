@@ -338,7 +338,8 @@
 
 	.profile-nav {
 		position: sticky;
-		top: 0;
+		top: 22rpx;
+    margin-bottom: 46rpx;
 		height: 44pt;
 		z-index: 2;
 	}

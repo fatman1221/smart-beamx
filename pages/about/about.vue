@@ -259,12 +259,12 @@
 		position: sticky;
 		top: 0;
 		text-align: center;
-		padding: 16px 0;
+		padding: 16rpx 0;
 		z-index: 2;
 	}
 
 	.page-title {
-		font-size: 20px;
+		font-size: 36rpx;
 		color: #ffffff;
 	}
 

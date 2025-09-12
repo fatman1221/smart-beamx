@@ -3,28 +3,24 @@
     {
       "path": "pages/tabBar/home/home",
       "style": {
-        "navigationBarTitleText": "智能汽车灯",
         "navigationBarBackgroundColor": "#000000",
         "navigationBarTextStyle": "white",
-        "backgroundColor": "#000000"
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/device/connect/connect",
       "style": {
-        "navigationBarTitleText": "连接设备",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/tabBar/mode/mode",
       "style": {
-        "navigationBarTitleText": "模式",
         "navigationBarBackgroundColor": "#000000",
         "navigationBarTextStyle": "white",
-        "backgroundColor": "#000000"
+        "navigationStyle": "custom"
       }
     },
     {
@@ -38,11 +34,16 @@
       }
     },
     {
+      "path": "pages/scene/speed",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
       "path": "pages/scene/acceleration",
       "style": {
-        "navigationBarTitleText": "加速度",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
@@ -94,9 +95,11 @@
     {
       "path": "pages/mode/setting",
       "style": {
-        "navigationBarTitleText": "模式设置",
+        "navigationBarTitleText": "模式",
         "navigationBarBackgroundColor": "#000000",
         "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
+
         "backgroundColor": "#000000"
       }
     },
@@ -133,27 +136,21 @@
     {
       "path": "pages/points/points",
       "style": {
-        "navigationBarTitleText": "积分商城",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/points/rules",
       "style": {
-        "navigationBarTitleText": "积分奖励规则",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/points/rulesText",
       "style": {
-        "navigationBarTitleText": "积分奖励规则",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
@@ -256,34 +253,5 @@
     "navigationBarTitleText": "SmartBeamX",
     "navigationBarBackgroundColor": "#000000",
     "backgroundColor": "#000000"
-  },
- "tabBar": {
-  "custom": true,
-  "color": "#666666",
-  "selectedColor": "#ffffff",
-  "backgroundColor": "#000000",
-  "borderStyle": "white",
-  "list": [
-    {
-      "pagePath": "pages/tabBar/home/home",
-      "text": "首页"
-    },
-    {
-      "pagePath": "pages/tabBar/mode/mode",
-      "text": "模式"
-    },
-    {
-      "pagePath": "pages/tabBar/scene/scene",
-      "text": "场景"
-    },
-    {
-      "pagePath": "pages/tabBar/shop/shop",
-      "text": "商城"
-    },
-    {
-      "pagePath": "pages/tabBar/my/my",
-      "text": "我的"
-    }
-  ]
-}
+  }
 }

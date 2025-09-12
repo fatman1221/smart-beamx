@@ -1,26 +1,25 @@
 <template>
-  <view class="acceleration-detail-page">
+  <view class="speed-detail-page">
     <view class="page-nav">
       <image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
-<!--      <text class="page-title">加速度</text>-->
     </view>
     
     <view class="content">
       <view class="measurement-display">
         <text class="value">0</text>
-        <text class="unit">G</text>
+        <text class="unit">mph</text>
       </view>
-      <text class="label">加速度</text>
+      <text class="label">速度</text>
     </view>
   </view>
 </template>
 
 <script>
 export default {
-  name: 'AccelerationDetailPage',
+  name: 'SpeedDetailPage',
   data() {
     return {
-      acceleration: 0
+      speed: 0
     }
   },
   methods: {
@@ -32,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.acceleration-detail-page {
+.speed-detail-page {
   background: #000;
   min-height: 100vh;
   color: #fff;
@@ -58,7 +57,7 @@ export default {
   width: 40rpx;
   height: 40rpx;
   display: flex;
-  margin-top: 48rpx;
+  margin-top: 8rpx;
   margin-left: 24rpx;
 }
 

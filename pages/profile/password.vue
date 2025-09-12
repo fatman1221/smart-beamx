@@ -1,9 +1,7 @@
 <template>
   <view class="password-page">
     <view class="page-nav">
-      <view class="nav-back" @click="goBack">
-        <text class="back-icon">‹</text>
-      </view>
+      <image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
     </view>
     <view class="content-title">设置密码</view>
     <view class="input-area">
@@ -88,14 +86,10 @@ export default {
 
 .nav-back {
   position: absolute;
-  left: 16pt;
-  top: 8pt;
-  width: 32pt;
-  height: 32pt;
+  width: 40rpx;
+  height: 40rpx;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+  margin-top: 8rpx;
 }
 
 .back-icon {
@@ -111,7 +105,7 @@ export default {
   font-size: 56rpx;
   font-weight: 600;
   font-family: "PingFang SC", sans-serif;
-  margin: 60px 0 80px 24px;
+  margin: 60rpx 0 80rpx 10rpx;
 }
 
 .input-area {
